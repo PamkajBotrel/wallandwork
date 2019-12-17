@@ -12,8 +12,9 @@ import {LibraryComponent} from './components/library/library.component';
 import {RegisterComponent} from './components/register/register.component';
 import {BookRepository} from './services/book.repository';
 import {BookService} from './services/real/book.service';
-import { WallpostComponent } from './wallpost/wallpost.component';
-import { PostComponent } from './post/post.component';
+import { WallpostComponent } from './components/wallpost/wallpost.component';
+import { PostComponent } from './components/post/post.component';
+import { PostRepository } from './services/post.repository';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PostComponent } from './post/post.component';
     MatSnackBarModule
   ],
   providers: [
-    {provide: BookRepository, useFactory: (http: HttpClient) => new BookService(http), 'deps': [HttpClient]}
+    {provide: BookRepository, useFactory: (http: HttpClient) => new BookService(http), 'deps': [HttpClient]},
+    {provide: PostRepository, useFactory: (http: HttpClient) => new PostService(http), 'deps': [HttpClient]}
   ],
   bootstrap: [AppComponent]
 })
