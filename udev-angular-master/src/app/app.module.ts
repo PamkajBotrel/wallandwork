@@ -12,15 +12,13 @@ import {LibraryComponent} from './components/library/library.component';
 import {RegisterComponent} from './components/register/register.component';
 import {BookRepository} from './services/book.repository';
 import {BookService} from './services/real/book.service';
-import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LibraryComponent,
     BookComponent,
-    RegisterComponent,
-    PostComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
