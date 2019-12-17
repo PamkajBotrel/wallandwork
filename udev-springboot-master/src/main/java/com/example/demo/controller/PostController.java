@@ -35,6 +35,11 @@ public class PostController {
     public List<PostJSON> getAll() {
         return postService.getAllPosts();
     }
-
-
+    
+    @ApiOperation(value = "Get one Post", response = PostJSON.class)
+    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    public PostJSON getPost(@ApiParam(value = "Post id", required = true) @PathVariable long id) {
+        return postService.getPostById(id);
+    }
+    
 }

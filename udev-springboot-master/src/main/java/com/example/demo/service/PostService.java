@@ -29,8 +29,12 @@ public class PostService {
         return mapper.mapToPost(postList);
     }
 
-
-
+    @Cacheable(cacheManager = "redisCacheManager", cacheNames = "posts", key = "#id")
+    public PostJSON getPostById(long id) {
+        log.info("Called for getPostById ...");
+        Post p = postRepository.getOne(id);
+        return mapper.mapToPost(p);
+    }
 
 
 
