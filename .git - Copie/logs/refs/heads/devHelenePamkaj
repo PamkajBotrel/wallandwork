@@ -1,5 +1,0 @@
-0000000000000000000000000000000000000000 43149c8972972b4b0581bb1b99647e99f177869e Pamkaj Botrel <pamkaj.botrel@cgi.com> 1576594509 +0100	branch: Created from HEAD
-43149c8972972b4b0581bb1b99647e99f177869e b79d0077f753c97ad22d3d2a3664c02b0cd1a7cd Pamkaj Botrel <pamkaj.botrel@cgi.com> 1576594793 +0100	commit: Adding post to spring boot
-b79d0077f753c97ad22d3d2a3664c02b0cd1a7cd a1bba13fb7619a54e2e11d7d7c37832a838b88c4 Pamkaj Botrel <pamkaj.botrel@cgi.com> 1576595171 +0100	commit: Revert "Adding post to spring boot"
-a1bba13fb7619a54e2e11d7d7c37832a838b88c4 b79d0077f753c97ad22d3d2a3664c02b0cd1a7cd Pamkaj Botrel <pamkaj.botrel@cgi.com> 1576595183 +0100	undo: commit: Revert "Adding post to spring boot"
-b79d0077f753c97ad22d3d2a3664c02b0cd1a7cd 51840017549fc0de28f9622663566c5a13d5bbf3 Pamkaj Botrel <pamkaj.botrel@cgi.com> 1576595630 +0100	commit: angular post
