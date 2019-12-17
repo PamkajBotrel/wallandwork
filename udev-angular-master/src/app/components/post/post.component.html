@@ -1,1 +1,1 @@
-<p>post works!</p>
+<p *ngIf="post | async as p">{{p.id}} {{p.title}} {{p.content}}</p>

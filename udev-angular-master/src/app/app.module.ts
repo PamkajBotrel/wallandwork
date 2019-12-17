@@ -15,6 +15,7 @@ import {BookService} from './services/real/book.service';
 import { WallpostComponent } from './components/wallpost/wallpost.component';
 import { PostComponent } from './components/post/post.component';
 import { PostRepository } from './services/post.repository';
+import { PostService } from './services/real/post.service';
 
 @NgModule({
   declarations: [
