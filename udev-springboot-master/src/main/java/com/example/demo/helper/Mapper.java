@@ -39,12 +39,11 @@ public class Mapper {
 
     public Post mapToPost(PostJSON postJSON) {
         Assert.notNull(postJSON, "The postJSON must not be null");
-        Post b = new Post();
+        Post p = new Post();
         // must not set id !
-        b.setId(postJSON.getId());
-        b.setTitle(postJSON.getTitle());
-        b.setContent(postJSON.getContent());
-        return b;
+        p.setTitle(postJSON.getTitle());
+        p.setContent(postJSON.getContent());
+        return p;
     }
 
     public PostJSON mapToPost(Post post) {

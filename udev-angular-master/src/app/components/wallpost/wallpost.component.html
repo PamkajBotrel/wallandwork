@@ -1,1 +1,1 @@
-<p>wallpost works!</p>
+<p *ngFor="let post of (wallpost | async) as p">{{p.id}} {{p.title}} {{p.content}}</p>
