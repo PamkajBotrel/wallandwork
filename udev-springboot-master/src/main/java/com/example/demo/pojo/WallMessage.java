@@ -7,10 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 @Data
 @Entity
-public class Post {
+public class WallMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,4 +19,6 @@ public class Post {
     private String title;
     @NotEmpty
     private String content;
+    /*@NotEmpty
+    private Date date;*/
 }

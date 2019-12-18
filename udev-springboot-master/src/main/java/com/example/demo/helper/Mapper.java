@@ -2,8 +2,8 @@ package com.example.demo.helper;
 
 import com.example.demo.pojo.Book;
 import com.example.demo.pojo.BookJSON;
-import com.example.demo.pojo.Post;
-import com.example.demo.pojo.PostJSON;
+import com.example.demo.pojo.WallMessage;
+import com.example.demo.pojo.WallMessageJSON;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -37,27 +37,27 @@ public class Mapper {
     }
 
 
-    public Post mapToPost(PostJSON postJSON) {
-        Assert.notNull(postJSON, "The postJSON must not be null");
-        Post p = new Post();
+    public WallMessage mapToPost(WallMessageJSON wallMessageJSON) {
+        Assert.notNull(wallMessageJSON, "The wallMessageJSON must not be null");
+        WallMessage wm = new WallMessage();
         // must not set id !
-        p.setTitle(postJSON.getTitle());
-        p.setContent(postJSON.getContent());
-        return p;
+        wm.setTitle(wallMessageJSON.getTitle());
+        wm.setContent(wallMessageJSON.getContent());
+        return wm;
     }
 
-    public PostJSON mapToPost(Post post) {
-        Assert.notNull(post, "The post must not be null");
-        PostJSON pJSON = new PostJSON();
-        pJSON.setId(post.getId());
-        pJSON.setTitle(post.getTitle());
-        pJSON.setContent(post.getContent());
-        return pJSON;
+    public WallMessageJSON mapToPost(WallMessage wallMessage) {
+        Assert.notNull(wallMessage, "The wallMessage must not be null");
+        WallMessageJSON wmJSON = new WallMessageJSON();
+        wmJSON.setId(wallMessage.getId());
+        wmJSON.setTitle(wallMessage.getTitle());
+        wmJSON.setContent(wallMessage.getContent());
+        return wmJSON;
     }
 
-    public List<PostJSON> mapToPost(List<Post> postList) {
-        Assert.notNull(postList, "The postList must not be null");
-        return postList.stream().map(this::mapToPost).collect(Collectors.toList());
+    public List<WallMessageJSON> mapToPost(List<WallMessage> wallMessageList) {
+        Assert.notNull(wallMessageList, "The wallMessageList must not be null");
+        return wallMessageList.stream().map(this::mapToPost).collect(Collectors.toList());
     }
 
 }

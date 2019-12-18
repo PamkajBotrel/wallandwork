@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Data
-public class PostJSON implements Serializable {
+public class WallMessageJSON implements Serializable {
     // Serializable to avoid Cannot serialize redis ERROR !
 
     private Long id;
