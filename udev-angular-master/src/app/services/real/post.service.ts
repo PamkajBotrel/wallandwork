@@ -12,7 +12,7 @@ export class PostService implements PostRepository {
   constructor(private http: HttpClient) { }
 
   add(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.url, post);
+    return this.http.post<Post>(this.url, post);/*c'est là que se fait le lien avec le projet Springboot*/
   }
 
   all(): Observable<Post[]> {

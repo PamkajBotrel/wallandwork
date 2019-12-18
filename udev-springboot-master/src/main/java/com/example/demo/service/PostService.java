@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.helper.Mapper;
+import com.example.demo.pojo.Book;
+import com.example.demo.pojo.BookJSON;
 import com.example.demo.pojo.Post;
 import com.example.demo.pojo.PostJSON;
 import com.example.demo.repository.PostRepository;
@@ -33,6 +35,10 @@ public class PostService {
         return mapper.mapToPost(p);
     }
 
+    public PostJSON addPost(PostJSON post) {
+        Post p = postRepository.save(mapper.mapToPost(post));
+        return mapper.mapToPost(p);
+    }
 
 
 }

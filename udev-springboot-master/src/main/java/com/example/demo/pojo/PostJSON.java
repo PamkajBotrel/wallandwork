@@ -12,5 +12,6 @@ public class PostJSON implements Serializable {
     private Long id;
     @NotEmpty
     private String title;
+    @NotEmpty
     private String content;
 }
