@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { PostComponent } from './components/post/post.component';
-import { WallpostComponent } from './components/wallpost/wallpost.component';
+import { WallMessageComponent } from './components/wallMessage/wallMessage.component';
+import { WallComponent } from './components/wall/wall.component';
 
 const routes: Routes = [
-  {path: '', component: WallpostComponent},
-  {path: 'posts/:id', component: PostComponent}
+  {path: '', component: WallComponent},
+  {path: 'wallMessages/:id', component: WallMessageComponent}
 ];
 
 @NgModule({

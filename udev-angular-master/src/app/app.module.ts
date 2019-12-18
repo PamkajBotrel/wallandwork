@@ -12,10 +12,10 @@ import {LibraryComponent} from './components/library/library.component';
 import {RegisterComponent} from './components/register/register.component';
 import {BookRepository} from './services/book.repository';
 import {BookService} from './services/real/book.service';
-import { WallpostComponent } from './components/wallpost/wallpost.component';
-import { PostComponent } from './components/post/post.component';
-import { PostRepository } from './services/post.repository';
-import { PostService } from './services/real/post.service';
+import { WallComponent } from './components/wall/wall.component';
+import { WallMessageComponent } from './components/wallMessage/wallMessage.component';
+import { WallMessageRepository } from './services/wallMessage.repository';
+import { WallMessageService } from './services/real/wallMessage.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { PostService } from './services/real/post.service';
     LibraryComponent,
     BookComponent,
     RegisterComponent,
-    WallpostComponent,
-    PostComponent
+    WallComponent,
+    WallMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ import { PostService } from './services/real/post.service';
   ],
   providers: [
     {provide: BookRepository, useFactory: (http: HttpClient) => new BookService(http), 'deps': [HttpClient]},
-    {provide: PostRepository, useFactory: (http: HttpClient) => new PostService(http), 'deps': [HttpClient]}
+    {provide: WallMessageRepository, useFactory: (http: HttpClient) => new WallMessageService(http), 'deps': [HttpClient]}
   ],
   bootstrap: [AppComponent]
 })
