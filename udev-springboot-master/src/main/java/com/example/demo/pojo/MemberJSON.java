@@ -13,4 +13,5 @@ public class MemberJSON implements Serializable {
     @NotEmpty
     private String name;
 
+
 }

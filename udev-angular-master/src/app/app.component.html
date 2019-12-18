@@ -1,14 +1,5 @@
 <h1>{{title}}</h1>
 
-<mat-toolbar color="primary">
-  <span>Library</span>
-  <span class="spacer"></span>
-  <button mat-mini-fab routerLink="/register">
-    <mat-icon aria-hidden="false" aria-label="Register book">add</mat-icon>
-  </button>
-</mat-toolbar>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<ngu-wall></ngu-wall>
 
-<ngu-wall-message></ngu-wall-message>
+<router-outlet></router-outlet>

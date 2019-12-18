@@ -12,10 +12,10 @@ export class WallComponent implements OnInit {
   wall: Observable<WallMessage[]>;
 
   constructor(
-    private postService: WallMessageRepository
+    private wallService: WallMessageRepository
   ) { }
 
   ngOnInit() {
-    this.wall = this.postService.all();
+    this.wall = this.wallService.all();
   }
 }

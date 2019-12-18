@@ -1,1 +1,1 @@
-<p *ngFor="let post of (wall | async) as p">{{p.id}} {{p.title}} {{p.content}}</p>
+<p *ngFor="let wallMessage of (wall | async)">{{wallMessage.id}} {{wallMessage.title}} {{wallMessage.content}}</p>
