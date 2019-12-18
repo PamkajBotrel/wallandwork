@@ -1,0 +1,12 @@
+<button mat-raised-button color="accent" title="back" routerLink="/">
+  Retour
+</button>
+
+<div *ngIf="book | async as b">
+  <h3>
+    <a [title]="b.id + ' - ' + b.title">
+      {{b.title}}
+    </a>
+  </h3>
+  <p>{{b.author}}</p>
+</div>
