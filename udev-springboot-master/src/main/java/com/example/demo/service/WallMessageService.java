@@ -37,6 +37,4 @@ public class WallMessageService {
         WallMessage wm = wallMessageRepository.save(mapper.mapToPost(wallMessage));
         return mapper.mapToPost(wm);
     }
-
-
 }

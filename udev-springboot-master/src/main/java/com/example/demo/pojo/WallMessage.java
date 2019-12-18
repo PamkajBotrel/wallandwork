@@ -1,13 +1,17 @@
 package com.example.demo.pojo;
-
-import lombok.Data;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
+
+
+
+import lombok.Data;
 
 @Data
 @Entity
@@ -19,6 +23,8 @@ public class WallMessage {
     private String title;
     @NotEmpty
     private String content;
-    /*@NotEmpty
-    private Date date;*/
+    @NotEmpty
+    private LocalDateTime date;
+    @NotEmpty
+    private Long authorId;
 }

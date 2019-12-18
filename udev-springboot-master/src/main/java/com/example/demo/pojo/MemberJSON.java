@@ -11,7 +11,9 @@ public class MemberJSON implements Serializable {
 
     private Long id;
     @NotEmpty
+    private Long groupId;
+    @NotEmpty
     private String name;
-
-
+    @NotEmpty
+    private String email;
 }
