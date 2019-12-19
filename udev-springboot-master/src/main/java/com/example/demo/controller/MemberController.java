@@ -64,11 +64,11 @@ public class MemberController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/email/{email}")
     // FIXME not good path for REST ...
-    public long findIfMailInDataBase(@ApiParam(value = "Email", required = true)
-                                         @PathVariable String email) {
-
+    public long findIfMailInDataBase(@ApiParam(value = "Email", required = true) @PathVariable String email) {
         return memberService.getIfEmailInDatabase(email);
     }
+
+
 }
 
 
