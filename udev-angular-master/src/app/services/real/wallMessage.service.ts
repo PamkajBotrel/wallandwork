@@ -7,7 +7,7 @@ import {WallMessageRepository} from '../wallMessage.repository';
 
 @Injectable()
 export class WallMessageService implements WallMessageRepository {
-  private url: string = environment.api + '/wallMessages';
+  private url: string = environment.api + '/wallmessages';
 
   constructor(private http: HttpClient) { }
 

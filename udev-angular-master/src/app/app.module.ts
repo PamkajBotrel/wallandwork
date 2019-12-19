@@ -21,6 +21,10 @@ import { WallMessageService } from './services/real/wallMessage.service';
 import { FormConnectionComponent } from './components/form-connection/form-connection.component';
 import {MemberRepository} from './services/member.repository';
 import {MemberService} from './services/real/member.service';
+import { CommentComponent } from './components/comment/comment.component';
+import { CommentRepository } from './services/comment.repository';
+import { CommentService } from './services/real/comment.service';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 
 
 @NgModule({
@@ -32,6 +36,8 @@ import {MemberService} from './services/real/member.service';
     WallComponent,
     WallMessageComponent,
     FormConnectionComponent
+    CommentComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import {MemberService} from './services/real/member.service';
     {provide: BookRepository, useFactory: (http: HttpClient) => new BookService(http), 'deps': [HttpClient]},
     {provide: WallMessageRepository, useFactory: (http: HttpClient) => new WallMessageService(http), 'deps': [HttpClient]},
     {provide: MemberRepository, useFactory: (http: HttpClient) => new MemberService(http), 'deps' : [HttpClient]}
+    {provide: CommentRepository, useFactory: (http: HttpClient) => new CommentService(http), 'deps': [HttpClient]}
   ],
   bootstrap: [AppComponent]
 })

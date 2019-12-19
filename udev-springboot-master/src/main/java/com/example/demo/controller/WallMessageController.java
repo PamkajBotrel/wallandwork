@@ -22,7 +22,7 @@ import java.util.List;
 @Api(tags = { "WallMessage" })
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = "wallMessages", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "wallmessages", produces = MediaType.APPLICATION_JSON_VALUE)
 public class WallMessageController {
     @Resource
     private WallMessageService wallMessageService;
@@ -38,7 +38,6 @@ public class WallMessageController {
 
     @ApiOperation(value = "Get all WallMessage between two dates")
     @RequestMapping(method = RequestMethod.GET, value = "/{startTime}--{endTime}") // URL !!
-    @ResponseStatus(HttpStatus.CREATED)
     public List<WallMessageJSON> getAllWithinDateRange(
             @ApiParam(value = "start date") @Valid @RequestParam("start") String start,
             @ApiParam(value = "end") @Valid @RequestParam("endTime") String end) {

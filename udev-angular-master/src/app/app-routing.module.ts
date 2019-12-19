@@ -9,6 +9,9 @@ const routes: Routes = [
   {path: 'wallMessages/:id', component: WallMessageComponent},
   {path: 'email/:email', component: WallComponent },
   {path: 'wall', component: WallComponent }
+  {path: 'wallmessages/:id', component: WallMessageComponent},
+  {path: 'comments/:id', component: CommentComponent},
+  {path: 'comments/wallmessage/:wallmessageid', component: CommentListComponent}
 ];
 
 @NgModule({
