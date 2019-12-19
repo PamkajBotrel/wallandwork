@@ -21,7 +21,12 @@ export class CommentListComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.commentList = this.commentService.byWallMessageId(this.wallMessageId);
+      console.log(params);
+      let goodId = this.wallMessageId;
+      if(params.has("wallMessageId")) {
+        goodId = params.get("wallMessageId");
+      }
+      this.commentList = this.commentService.byWallMessageId(goodId);
     });
   }
 }
