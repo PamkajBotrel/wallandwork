@@ -46,4 +46,9 @@ public class MemberService {
     }
 
 
+    public long getIfEmailInDatabase(String email) {
+        long answer = memberRepository.findIfMailInDataBase(email);
+        return answer;//a mapper aussi?
+    }
+
 }
