@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { WallMessage } from 'src/app/models/wallMessage';
 import { WallMessageRepository } from 'src/app/services/wallMessage.repository';
 
-
 @Component({
   selector: 'ngu-wall-message',
   templateUrl: './wallMessage.component.html',

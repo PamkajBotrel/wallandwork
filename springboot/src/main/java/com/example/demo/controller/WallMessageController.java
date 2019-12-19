@@ -31,13 +31,13 @@ public class WallMessageController {
     // private AuthService authService;
 
     @ApiOperation(value = "Get all WallMessages")
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<WallMessageJSON> getAll() {
         return wallMessageService.getAllWallMessages();
     }
 
     @ApiOperation(value = "Get all WallMessage between two dates")
-    @RequestMapping(method = RequestMethod.GET, value = "/{startTime}--{endTime}") // URL !!
+    @GetMapping(value = "/{startTime}--{endTime}") // URL !!
     public List<WallMessageJSON> getAllWithinDateRange(
             @ApiParam(value = "start date") @Valid @RequestParam("start") String start,
             @ApiParam(value = "end") @Valid @RequestParam("endTime") String end) {
@@ -59,7 +59,7 @@ public class WallMessageController {
     }
     
     @ApiOperation(value = "Get one WallMessage", response = WallMessageJSON.class)
-    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    @GetMapping(value = "{id}")
     public WallMessageJSON getWallMessageById(@ApiParam(value = "WallMessage id", required = true) @PathVariable long id) {
         return wallMessageService.getWallMessageById(id);
     }
@@ -75,7 +75,7 @@ public class WallMessageController {
 
     }*/
    @ApiOperation(value = "Add WallMessage", response = WallMessageJSON.class)
-   @RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
    @ResponseStatus(HttpStatus.CREATED)
    public WallMessageJSON addWallMessage(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "WallMessage to Add", required = true) @Valid @RequestBody WallMessageJSON wallMessage) {
@@ -88,7 +88,7 @@ public class WallMessageController {
    }
 
    @ApiOperation(value = "Update WallMessage", response = WallMessageJSON.class)
-   @RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "/update") // URL !!
+   @PutMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "o/update") // URL !!
    @ResponseStatus(HttpStatus.CREATED)
    public int updateWallMessage(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "WallMessage to Update", required = true) @Valid @RequestBody WallMessageJSON wallMessage) {

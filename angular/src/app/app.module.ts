@@ -17,6 +17,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CommentRepository } from './services/comment.repository';
 import { CommentService } from './services/real/comment.service';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { AddMessageComponent } from './components/add-message/add-message.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
     WallMessageComponent,
     FormConnectionComponent,
     CommentComponent,
-    CommentListComponent
+    CommentListComponent,
+    AddMessageComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
