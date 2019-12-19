@@ -29,6 +29,12 @@ public class CommentService {
         return commentMapper.mapTo(commentList);
     }
 
+    public List<CommentJSON> getAllCommentsFromWallMessageId(long wallMessageId) {
+        log.info("Called for getAllCommentsFromWallMessageId");
+        List<Comment> commentList = commentRepository.findAllCommentsFromWallMessageId(wallMessageId);
+        return commentMapper.mapTo(commentList);
+    }
+
     @Cacheable(cacheManager = "redisCacheManager", cacheNames = "comments", key = "#id")
     public CommentJSON getCommentById(long id) {
         log.info("Called for getPostById ...");

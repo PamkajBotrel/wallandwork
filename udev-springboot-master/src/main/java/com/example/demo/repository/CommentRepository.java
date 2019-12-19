@@ -18,6 +18,12 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
      @Transactional
      @Modifying
-     @Query(value = "update wall_message w set w.content = ?2, w.updated_at = NOW() where w.id = ?1", nativeQuery = true)
+     @Query(value = "update comments c set c.content = ?2, c.updated_at = NOW() where c.id = ?1", nativeQuery = true)
      int setFixedContentFor(Long id, String content);
+
+     @Transactional
+     @Modifying
+     @Query(value = "select * from comments where wall_message_id = ?1", nativeQuery = true)
+     List<Comment> findAllCommentsFromWallMessageId(
+         @Param("startTime") long wallMessageId);
 }
