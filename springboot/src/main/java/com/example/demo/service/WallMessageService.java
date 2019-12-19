@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.helper.Mapper;
+import com.example.demo.helper.WallMessageMapper;
 import com.example.demo.pojo.WallMessage;
 import com.example.demo.pojo.WallMessageJSON;
 import com.example.demo.repository.WallMessageRepository;
@@ -20,7 +20,7 @@ public class WallMessageService {
     private WallMessageRepository wallMessageRepository;
 
     @Resource
-    private Mapper mapper;
+    private WallMessageMapper mapper;
 
     public List<WallMessageJSON> getAllWallMessages() {
         log.info("Called for getAllWallMessages ...");

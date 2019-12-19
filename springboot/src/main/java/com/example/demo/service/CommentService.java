@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.helper.CommentMapper;
-import com.example.demo.helper.Mapper;
 import com.example.demo.pojo.Comment;
 import com.example.demo.pojo.CommentJSON;
 import com.example.demo.repository.CommentRepository;

@@ -2,8 +2,6 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {Book} from '../../models/book';
-import {BookRepository} from '../book.repository';
 import {Member} from '../../models/member';
 import {MemberRepository} from '../member.repository';
 

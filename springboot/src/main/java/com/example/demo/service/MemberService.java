@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.helper.Mapper;
+import com.example.demo.helper.MemberMapper;
 import com.example.demo.pojo.Member;
 import com.example.demo.pojo.MemberJSON;
 import com.example.demo.repository.MemberRepository;
@@ -19,7 +19,7 @@ public class MemberService {
     private MemberRepository memberRepository;
 
     @Resource
-    private Mapper mapper;
+    private MemberMapper mapper;
 
     public List<MemberJSON> getAllMembers() {
         log.info("Called for getAllMembers ...");
