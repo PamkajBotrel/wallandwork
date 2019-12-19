@@ -3,7 +3,9 @@ package com.example.demo.service;
 import com.example.demo.helper.Mapper;
 import com.example.demo.pojo.Book;
 import com.example.demo.pojo.BookJSON;
+import com.example.demo.pojo.Member;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -48,4 +50,6 @@ public class BookService {
         List<Book> bookList = bookRepository.findByTitle(title);
         return mapper.mapTo(bookList);
     }
+
+
 }

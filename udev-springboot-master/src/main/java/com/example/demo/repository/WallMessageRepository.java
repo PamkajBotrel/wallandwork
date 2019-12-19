@@ -11,6 +11,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface WallMessageRepository extends JpaRepository<WallMessage, Long> {
     /*JpaRepository will have all the functions of CrudRepository and PagingAndSortingRepository. So if you don't need
