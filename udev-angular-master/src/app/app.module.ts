@@ -16,6 +16,10 @@ import { WallComponent } from './components/wall/wall.component';
 import { WallMessageComponent } from './components/wallMessage/wallMessage.component';
 import { WallMessageRepository } from './services/wallMessage.repository';
 import { WallMessageService } from './services/real/wallMessage.service';
+import { CommentComponent } from './components/comment/comment.component';
+import { CommentRepository } from './services/comment.repository';
+import { CommentService } from './services/real/comment.service';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { WallMessageService } from './services/real/wallMessage.service';
     BookComponent,
     RegisterComponent,
     WallComponent,
-    WallMessageComponent
+    WallMessageComponent,
+    CommentComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,8 @@ import { WallMessageService } from './services/real/wallMessage.service';
   ],
   providers: [
     {provide: BookRepository, useFactory: (http: HttpClient) => new BookService(http), 'deps': [HttpClient]},
-    {provide: WallMessageRepository, useFactory: (http: HttpClient) => new WallMessageService(http), 'deps': [HttpClient]}
+    {provide: WallMessageRepository, useFactory: (http: HttpClient) => new WallMessageService(http), 'deps': [HttpClient]},
+    {provide: CommentRepository, useFactory: (http: HttpClient) => new CommentService(http), 'deps': [HttpClient]}
   ],
   bootstrap: [AppComponent]
 })
