@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
+import java.util.Date;
 import java.util.List;
 
 @Slf4j  //bibliothèque pour les log
@@ -26,6 +28,12 @@ public class WallMessageService {
         return mapper.mapToPost(wallMessageList);
     }
 
+    public List<WallMessageJSON> getAllWallMessagesWithinDateRange(Date startTime, Date endTime) {
+        log.info("Called for getAllWallMessagesWithinDateRange");
+        List<WallMessage> wallMessageList = wallMessageRepository.findAllMessagesWithinDateRange(startTime, endTime);
+        return mapper.mapToPost(wallMessageList);
+    }
+
     @Cacheable(cacheManager = "redisCacheManager", cacheNames = "wallMessages", key = "#id")
     public WallMessageJSON getWallMessageById(long id) {
         log.info("Called for getPostById ...");
@@ -36,5 +44,10 @@ public class WallMessageService {
     public WallMessageJSON addWallMessage(WallMessageJSON wallMessage) {
         WallMessage wm = wallMessageRepository.save(mapper.mapToPost(wallMessage));
         return mapper.mapToPost(wm);
+    }
+
+    public int updateWallMessage(WallMessageJSON wallMessage) {
+        int numrows = wallMessageRepository.setFixedContentFor(wallMessage.getId(),wallMessage.getContent());
+        return numrows;
     }
 }

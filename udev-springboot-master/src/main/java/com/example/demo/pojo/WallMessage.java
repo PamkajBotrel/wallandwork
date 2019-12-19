@@ -1,30 +1,31 @@
 package com.example.demo.pojo;
+
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-
+import com.example.demo.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
 
 @Data
 @Entity
-public class WallMessage {
+@Table(name="wall_message")
+public class WallMessage extends AuditModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
     private String title;
     @NotEmpty
+    @Lob
     private String content;
-    @NotEmpty
-    private LocalDateTime date;
-    @NotEmpty
+
+    // @ManyToOne
+    // @JoinColumn(name="author_id")
     private Long authorId;
+
 }

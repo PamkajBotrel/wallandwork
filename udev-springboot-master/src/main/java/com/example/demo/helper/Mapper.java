@@ -45,7 +45,8 @@ public class Mapper {
         // must not set id !
         wm.setTitle(wallMessageJSON.getTitle());
         wm.setContent(wallMessageJSON.getContent());
-        wm.setDate(wallMessageJSON.getDate());
+        wm.setCreatedAt(wallMessageJSON.getCreatedAt());
+        wm.setUpdatedAt(wallMessageJSON.getUpdatedAt());
         wm.setAuthorId(wallMessageJSON.getAuthorId());
         return wm;
     }
@@ -56,7 +57,8 @@ public class Mapper {
         wmJSON.setId(wallMessage.getId());
         wmJSON.setTitle(wallMessage.getTitle());
         wmJSON.setContent(wallMessage.getContent());
-        wmJSON.setDate(wallMessage.getDate());
+        wmJSON.setCreatedAt(wallMessage.getCreatedAt());
+        wmJSON.setUpdatedAt(wallMessage.getUpdatedAt());
         wmJSON.setAuthorId(wallMessage.getAuthorId());
         return wmJSON;
     }

@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class WallMessageJSON implements Serializable {
@@ -14,8 +14,9 @@ public class WallMessageJSON implements Serializable {
     private String title;
     @NotEmpty
     private String content;
-    @NotEmpty
-    private LocalDateTime date;
-    @NotEmpty
-    private long authorId;
+
+    private Date createdAt;
+    private Date updatedAt;
+
+    private Long authorId; // TO DO replace it by id, and do the mapping WallMessage <-> WallMessageJSON
 }

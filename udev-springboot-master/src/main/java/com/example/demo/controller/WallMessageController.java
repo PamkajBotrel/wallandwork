@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
-@Api(tags = {"WallMessage"})
+@Api(tags = { "WallMessage" })
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "wallMessages", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,13 +27,36 @@ public class WallMessageController {
     @Resource
     private WallMessageService wallMessageService;
 
-   // @Resource
-   // private AuthService authService;
+    // @Resource
+    // private AuthService authService;
 
     @ApiOperation(value = "Get all WallMessages")
     @RequestMapping(method = RequestMethod.GET)
     public List<WallMessageJSON> getAll() {
         return wallMessageService.getAllWallMessages();
+    }
+
+    @ApiOperation(value = "Get all WallMessage between two dates")
+    @RequestMapping(method = RequestMethod.GET, value = "/{startTime}--{endTime}") // URL !!
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<WallMessageJSON> getAllWithinDateRange(
+            @ApiParam(value = "start date") @Valid @RequestParam("start") String start,
+            @ApiParam(value = "end") @Valid @RequestParam("endTime") String end) {
+                //let's convert the string dates to sql dates
+        SimpleDateFormat sqlUsDate = new SimpleDateFormat("yyyy-mm-dd");
+        Date startTime = new Date(1970, 01, 01);
+        Date endTime = new Date(3000, 01, 01);
+        try {
+            if(start!="") {
+            startTime = sqlUsDate.parse(start);}
+            if(end!=""){
+            endTime = sqlUsDate.parse(end);}
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return wallMessageService.getAllWallMessagesWithinDateRange(startTime, endTime);
     }
     
     @ApiOperation(value = "Get one WallMessage", response = WallMessageJSON.class)
@@ -53,7 +80,7 @@ public class WallMessageController {
    @ResponseStatus(HttpStatus.CREATED)
    public WallMessageJSON addWallMessage(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "WallMessage to Add", required = true) @Valid @RequestBody WallMessageJSON wallMessage) {
-       // test with @Valid : @Valid @RequestBody ... get Spring Bad Request 400 if NotEmpty
+                                    // test with @Valid : @Valid @RequestBody ... get Spring Bad Request 400 if NotEmpty
        // or JPA RollbackException (DB side)
        /*if (!authService.isAuthorize(authorization)) {
            throw new ForbiddenException();
@@ -61,5 +88,17 @@ public class WallMessageController {
        return wallMessageService.addWallMessage(wallMessage);
    }
 
+   @ApiOperation(value = "Update WallMessage", response = WallMessageJSON.class)
+   @RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "/update") // URL !!
+   @ResponseStatus(HttpStatus.CREATED)
+   public int updateWallMessage(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
+                                  @ApiParam(value = "WallMessage to Update", required = true) @Valid @RequestBody WallMessageJSON wallMessage) {
+                                    // test with @Valid : @Valid @RequestBody ... get Spring Bad Request 400 if NotEmpty
+       // or JPA RollbackException (DB side)
+       /*if (!authService.isAuthorize(authorization)) {
+           throw new ForbiddenException();
+       }*/
+       return wallMessageService.updateWallMessage(wallMessage);
+   }
     
 }

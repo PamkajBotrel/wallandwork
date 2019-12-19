@@ -28,11 +28,17 @@ public class MemberService {
     }
 
     @Cacheable(cacheManager = "redisCacheManager", cacheNames = "members", key = "#id")
-    public MemberJSON getMemberById(long id) {
-        log.info("Called for getPostById ...");
+    public MemberJSON getMemberJSONById(long id) {
+        log.info("Called for getMemberJSONById …");
         Member m = memberRepository.getOne(id);
         return mapper.mapToMember(m);
     }
+
+    // public Member getMemberById(long id){
+    //     log.info("Called for getMemberById …");
+    //     Member m = memberRepository.getOne(id);
+    //     return m;
+    // }
 
     public MemberJSON addMember(MemberJSON member) {
         Member m = memberRepository.save(mapper.mapToMember(member));

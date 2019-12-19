@@ -35,7 +35,7 @@ public class MemberController {
     @ApiOperation(value = "Get one Member", response = MemberJSON.class)
     @RequestMapping(method = RequestMethod.GET, value = "{id}")
     public MemberJSON getMemberById(@ApiParam(value = "Member id", required = true) @PathVariable long id) {
-        return memberService.getMemberById(id);
+        return memberService.getMemberJSONById(id);
     }
 
    /*@PostMapping("/posts")

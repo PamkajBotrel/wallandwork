@@ -10,7 +10,6 @@ public class MemberJSON implements Serializable {
     // Serializable to avoid Cannot serialize redis ERROR !
 
     private Long id;
-    @NotEmpty
     private Long groupId;
     @NotEmpty
     private String name;
