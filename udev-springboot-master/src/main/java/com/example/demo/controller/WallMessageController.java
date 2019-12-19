@@ -22,7 +22,7 @@ import java.util.List;
 @Api(tags = { "WallMessage" })
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(value = "wallMessages", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "wallmessages", produces = MediaType.APPLICATION_JSON_VALUE)
 public class WallMessageController {
     @Resource
     private WallMessageService wallMessageService;

@@ -19,7 +19,7 @@ import { WallMessageService } from './services/real/wallMessage.service';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentRepository } from './services/comment.repository';
 import { CommentService } from './services/real/comment.service';
-import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [

@@ -79,7 +79,7 @@ public class CommentController {
    }
     
    @ApiOperation(value = "Get all comments from a WallMessage", response = CommentJSON.class)
-   @RequestMapping(method = RequestMethod.GET, value = "/bywallmessage/{id}")
+   @RequestMapping(method = RequestMethod.GET, value = "wallmessage/{id}")
    public List<CommentJSON> getAllCommentsFromWallMessageId(@ApiParam(value = "WallMessage id", required = true) @PathVariable long id) {
        return commentService.getAllCommentsFromWallMessageId(id);
    }

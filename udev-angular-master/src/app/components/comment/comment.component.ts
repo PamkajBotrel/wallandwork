@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Comment } from 'src/app/models/comment';
 import { CommentRepository } from 'src/app/services/comment.repository';
+
 
 @Component({
   selector: 'ngu-comment',
