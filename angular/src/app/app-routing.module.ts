@@ -6,15 +6,16 @@ import { WallComponent } from './components/wall/wall.component';
 import {FormConnectionComponent} from './components/form-connection/form-connection.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 
 const routes: Routes = [
-  {path: '', component: FormConnectionComponent},
-  {path: 'email/:email', component: WallComponent },
-  {path: 'wallmessages', component: WallComponent },
+  {path: '', component: WallComponent },
   {path: 'wallmessages/:id', component: WallMessageComponent},
   {path: 'wallmessages/o/add', component: AddMessageComponent},
   {path: 'comments/:id', component: CommentComponent},
-  {path: 'comments/wallmessage/:wallMessageId', component: CommentListComponent}
+  {path: 'comments/o/add', component: AddCommentComponent},
+  {path: 'comments/o/delete', component: CommentComponent},
+  {path: 'comments/wallmessage/:wallMessageId', component: CommentListComponent},
 ];
 
 @NgModule({

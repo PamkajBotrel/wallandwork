@@ -33,7 +33,7 @@ public class MemberController {
     }
     
     @ApiOperation(value = "Get one Member", response = MemberJSON.class)
-    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    @GetMapping(value = "{id}")
     public MemberJSON getMemberById(@ApiParam(value = "Member id", required = true) @PathVariable long id) {
         return memberService.getMemberJSONById(id);
     }
@@ -49,7 +49,7 @@ public class MemberController {
 
     }*/
    @ApiOperation(value = "Add Member", response = MemberJSON.class)
-   @RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
    @ResponseStatus(HttpStatus.CREATED)
    public MemberJSON addMember(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "Member to Add", required = true) @Valid @RequestBody MemberJSON member) {
@@ -62,7 +62,7 @@ public class MemberController {
    }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/email/{email}")
+    @GetMapping(value = "/email/{email}")
     // FIXME not good path for REST ...
     public long findIfMailInDataBase(@ApiParam(value = "Email", required = true) @PathVariable String email) {
         return memberService.getIfEmailInDatabase(email);

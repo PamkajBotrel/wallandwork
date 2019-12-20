@@ -1,2 +1,7 @@
 Liste de commentaires
-<p *ngFor="let comment of (commentList | async)">{{comment.id}} {{comment.title}} {{comment.content}} pour {{comment.wallMessageId}}</p>
+<p *ngFor="let comment of (commentList | async)">{{comment.id}} {{comment.title}} {{comment.content}} pour {{comment.wallMessageId}}
+
+        <button (click)="deleteComment(comment)">Delete Comment</button>
+
+</p>
+

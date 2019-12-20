@@ -1,5 +1,6 @@
 <p *ngFor="let wallMessage of (wall | async)">{{wallMessage.id}} {{wallMessage.title}} {{wallMessage.content}}
 
     <ngu-comment-list [wallMessageId]="wallMessage.id"></ngu-comment-list>
+    <ngu-add-comment [wallMessageId]="wallMessage.id"></ngu-add-comment>
 
 </p>

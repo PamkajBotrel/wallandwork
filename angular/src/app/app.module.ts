@@ -1,5 +1,5 @@
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {HttpClient, HttpClientModule, HttpInterceptor, HttpRequest, HttpHandler, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {NgModule, Injectable} from '@angular/core';
 import {ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSnackBarModule, MatToolbarModule, MatFormFieldModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
@@ -19,6 +19,8 @@ import { CommentService } from './services/real/comment.service';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AddMessageComponent } from './components/add-message/add-message.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
+
+
 
 
 @NgModule({
@@ -54,4 +56,4 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {};

@@ -37,7 +37,7 @@ public class CommentController {
     }
         
     @ApiOperation(value = "Get one Comment", response = CommentJSON.class)
-    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    @GetMapping(value = "{id}")
     public CommentJSON getCommentById(@ApiParam(value = "Comment id", required = true) @PathVariable long id) {
         return commentService.getCommentById(id);
     }
@@ -53,7 +53,7 @@ public class CommentController {
 
     }*/
    @ApiOperation(value = "Add Comment", response = CommentJSON.class)
-   @RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
    @ResponseStatus(HttpStatus.CREATED)
    public CommentJSON addComment(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "Comment to Add", required = true) @Valid @RequestBody CommentJSON comment) {
@@ -66,7 +66,7 @@ public class CommentController {
    }
 
    @ApiOperation(value = "Update Comment", response = CommentJSON.class)
-   @RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "/update") // URL !!
+   @PutMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "o/update") // URL !!
    @ResponseStatus(HttpStatus.CREATED)
    public int updateComment(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "Comment to Update", required = true) @Valid @RequestBody CommentJSON comment) {
@@ -79,9 +79,16 @@ public class CommentController {
    }
     
    @ApiOperation(value = "Get all comments from a WallMessage", response = CommentJSON.class)
-   @RequestMapping(method = RequestMethod.GET, value = "wallmessage/{id}")
+   @GetMapping(value = "wallmessage/{id}")
    public List<CommentJSON> getAllCommentsFromWallMessageId(@ApiParam(value = "WallMessage id", required = true) @PathVariable long id) {
        return commentService.getAllCommentsFromWallMessageId(id);
    }
+
+   @ApiOperation(value = "Delete Comment", response = CommentJSON.class)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "o/delete")
+   public CommentJSON delete(@ApiParam(value = "comment id", required = true) @Valid @RequestBody CommentJSON comment) {
+    return commentService.delete(comment);
+   }
+
 
 }

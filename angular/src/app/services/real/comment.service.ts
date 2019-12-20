@@ -16,17 +16,18 @@ export class CommentService implements CommentRepository {
     return this.http.post<Comment>(this.url, comment);/*c'est là que se fait le lien avec le projet Springboot*/
   }
 
-    byWallMessageId(wallMessageId: string): Observable<Comment[]> {
-      console.log("byWallMessageId");
-      console.trace();
-      console.log("wallMessageId = "+wallMessageId);
-      console.log(`${this.url}/wallmessage/${wallMessageId}`);
+  byWallMessageId(wallMessageId: string): Observable<Comment[]> {
         return this.http.get<Comment[]>(`${this.url}/wallmessage/${wallMessageId}`);
-    }
+  }
 
   byId(id: string): Observable<Comment> {
-      console.log("byId");
-      console.trace();
     return this.http.get<Comment>(`${this.url}/${id}`);
+  }
+
+  delete(comment: Comment): Observable<Comment> {
+    console.log(`${this.url}/o/delete`);
+    let result = this.http.post<Comment>(`${this.url}/o/delete`,comment);
+    result.toPromise(); // MAGIC, delete the comment ??
+    return result;
   }
 }

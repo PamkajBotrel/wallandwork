@@ -12,8 +12,9 @@ import javax.annotation.Resource;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
-@Slf4j  //bibliothèque pour les log
+@Slf4j // bibliothèque pour les log
 @Service
 public class CommentService {
     @Resource
@@ -47,7 +48,17 @@ public class CommentService {
     }
 
     public int updateComment(CommentJSON comment) {
-        int numrows = commentRepository.setFixedContentFor(comment.getId(),comment.getContent());
+        int numrows = commentRepository.setFixedContentFor(comment.getId(), comment.getContent());
         return numrows;
     }
+
+    public CommentJSON delete(CommentJSON comment) {
+        Optional<Comment> comment$ = commentRepository.findById(comment.getId());
+        System.out.println("deleting a comment");
+		if(comment$.isPresent()){
+            
+            commentRepository.delete(comment$.get());
+        }
+        return commentMapper.mapTo(comment$.get());
+	}
 }

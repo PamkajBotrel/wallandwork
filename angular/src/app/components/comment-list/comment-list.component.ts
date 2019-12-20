@@ -21,7 +21,7 @@ export class CommentListComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      console.log(params);
+      console.log("comment-list:"+this.wallMessageId);
       let goodId = this.wallMessageId;
       if(params.has("wallMessageId")) {
         goodId = params.get("wallMessageId");
@@ -29,4 +29,9 @@ export class CommentListComponent implements OnInit {
       this.commentList = this.commentService.byWallMessageId(goodId);
     });
   }
+
+  deleteComment(comment: Comment): void {
+    console.log("Deleting comment,id:"+comment.id);
+    this.commentService.delete(comment);
+  };
 }

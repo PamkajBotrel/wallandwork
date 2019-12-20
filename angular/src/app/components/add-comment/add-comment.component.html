@@ -1,1 +1,6 @@
-<p>add-comment works!</p>
+<form>
+        <input [(ngModel)]="comment.wallMessageId" name="wallMessageId" placeholder="Id of the message" type="number" value="{{wallMessageId}}"/>
+        <input [(ngModel)]="comment.title" name="title" placeholder="Type your title" type="text"/>
+        <input [(ngModel)]="comment.content" name="content" placeholder="Type your comment" type="text"/>
+        <button (click)="createComment()">Add</button>
+</form>
