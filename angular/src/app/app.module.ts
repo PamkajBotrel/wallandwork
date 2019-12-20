@@ -19,9 +19,20 @@ import { CommentService } from './services/real/comment.service';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AddMessageComponent } from './components/add-message/add-message.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import {
+  OktaAuthModule,
+  OktaCallbackComponent,
+} from '@okta/okta-angular';
+import { RouterModule } from '@angular/router';
+import { AddHeaderInterceptor } from './services/real/add-header-interceptor';
 
 
-
+const config = {
+  issuer: 'https://dev-842409.okta.com/oauth2/default',
+  redirectUri: 'http://localhost:4200/login/okta',
+  clientId: '0oa2add5bvmgUQ6gJ357',
+  pkce: true
+}
 
 @NgModule({
   declarations: [
@@ -47,9 +58,15 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     MatInputModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    OktaAuthModule.initAuth(config)
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddHeaderInterceptor,
+      multi: true,
+    },
     {provide: WallMessageRepository, useFactory: (http: HttpClient) => new WallMessageService(http), 'deps': [HttpClient]},
     {provide: MemberRepository, useFactory: (http: HttpClient) => new MemberService(http), 'deps' : [HttpClient]},
     {provide: CommentRepository, useFactory: (http: HttpClient) => new CommentService(http), 'deps': [HttpClient]}
