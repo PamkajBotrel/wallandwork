@@ -1,8 +1,16 @@
-<p *ngFor="let wallMessage of (wall | async)">{{wallMessage.id}} {{wallMessage.title}} {{wallMessage.content}}
 
-    <button (click)="deleteWallMessage(wallMessage)">Delete Message</button>
 
-    <ngu-comment-list [wallMessageId]="wallMessage.id"></ngu-comment-list>
-    <ngu-add-comment [wallMessageId]="wallMessage.id"></ngu-add-comment>
 
-</p>
+
+<div *ngFor="let wallMessage of (wall | async)" class="container">
+    {{wallMessage.id}} {{wallMessage.title}} {{wallMessage.content}}
+    <button mat-raised-button color="warn" (click)="deleteWallMessage(wallMessage)">Supprimer le message</button>
+    <mat-card>
+        <ngu-comment-list [wallMessageId]="wallMessage.id"></ngu-comment-list>
+    </mat-card>
+    <div>
+        <ngu-add-comment [wallMessageId]="wallMessage.id"></ngu-add-comment>
+    </div>
+</div>
+
+<ngu-add-message></ngu-add-message> 
