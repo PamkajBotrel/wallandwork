@@ -21,30 +21,31 @@ public class CommentService {
     private CommentRepository commentRepository;
 
     @Resource
-    private CommentMapper commentMapper;
+    private CommentMapper mapper;
 
     public List<CommentJSON> getAllComments() {
         log.info("Called for getAllComments ...");
         List<Comment> commentList = commentRepository.findAll();
-        return commentMapper.mapTo(commentList);
+        return mapper.mapTo(commentList);
     }
 
     public List<CommentJSON> getAllCommentsFromWallMessageId(long wallMessageId) {
         log.info("Called for getAllCommentsFromWallMessageId");
         List<Comment> commentList = commentRepository.findAllCommentsFromWallMessageId(wallMessageId);
-        return commentMapper.mapTo(commentList);
+        return mapper.mapTo(commentList);
     }
 
     @Cacheable(cacheManager = "redisCacheManager", cacheNames = "comments", key = "#id")
     public CommentJSON getCommentById(long id) {
         log.info("Called for getPostById ...");
-        Comment p = commentRepository.getOne(id);
-        return commentMapper.mapTo(p);
+        Comment c = commentRepository.getOne(id);
+        return mapper.mapTo(c);
     }
 
     public CommentJSON addComment(CommentJSON comment) {
-        Comment wm = commentRepository.save(commentMapper.mapTo(comment));
-        return commentMapper.mapTo(wm);
+        Comment c = mapper.mapTo(comment);
+        c = commentRepository.save(c);
+        return mapper.mapTo(c);
     }
 
     public int updateComment(CommentJSON comment) {
@@ -59,6 +60,6 @@ public class CommentService {
             
             commentRepository.delete(comment$.get());
         }
-        return commentMapper.mapTo(comment$.get());
+        return mapper.mapTo(comment$.get());
 	}
 }

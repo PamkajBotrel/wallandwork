@@ -53,7 +53,7 @@ public class CommentController {
 
     }*/
    @ApiOperation(value = "Add Comment", response = CommentJSON.class)
-   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "o/add")
    @ResponseStatus(HttpStatus.CREATED)
    public CommentJSON addComment(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "Comment to Add", required = true) @Valid @RequestBody CommentJSON comment) {

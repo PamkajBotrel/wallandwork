@@ -1,5 +1,7 @@
 <p *ngFor="let wallMessage of (wall | async)">{{wallMessage.id}} {{wallMessage.title}} {{wallMessage.content}}
 
+    <button (click)="deleteWallMessage(wallMessage)">Delete Message</button>
+
     <ngu-comment-list [wallMessageId]="wallMessage.id"></ngu-comment-list>
     <ngu-add-comment [wallMessageId]="wallMessage.id"></ngu-add-comment>
 

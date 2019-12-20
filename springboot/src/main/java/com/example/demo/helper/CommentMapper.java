@@ -1,18 +1,11 @@
 package com.example.demo.helper;
 
-import com.example.demo.pojo.Book;
-import com.example.demo.pojo.BookJSON;
-import com.example.demo.pojo.Comment;
-import com.example.demo.pojo.CommentJSON;
-import com.example.demo.pojo.Member;
-import com.example.demo.pojo.MemberJSON;
-import com.example.demo.pojo.WallMessage;
-import com.example.demo.pojo.WallMessageJSON;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import com.example.demo.pojo.Comment;
+import com.example.demo.pojo.CommentJSON;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 @Component
 public class CommentMapper {
@@ -20,7 +13,7 @@ public class CommentMapper {
     public Comment mapTo(CommentJSON commentJSON) {
         Assert.notNull(commentJSON, "The commentJSON must not be null");
         Comment c = new Comment();
-        // must not set id !*
+        // must not set id !
         c.setWallMessageId(commentJSON.getWallMessageId());
         c.setTitle(commentJSON.getTitle());
         c.setContent(commentJSON.getContent());

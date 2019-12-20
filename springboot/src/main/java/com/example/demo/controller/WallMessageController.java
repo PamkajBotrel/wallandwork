@@ -75,7 +75,7 @@ public class WallMessageController {
 
     }*/
    @ApiOperation(value = "Add WallMessage", response = WallMessageJSON.class)
-   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "o/add")
    @ResponseStatus(HttpStatus.CREATED)
    public WallMessageJSON addWallMessage(//@ApiParam(value = "Authorization token", required = true) @RequestHeader("Authorization") String authorization,
                                   @ApiParam(value = "WallMessage to Add", required = true) @Valid @RequestBody WallMessageJSON wallMessage) {
@@ -98,6 +98,12 @@ public class WallMessageController {
            throw new ForbiddenException();
        }*/
        return wallMessageService.updateWallMessage(wallMessage);
+   }
+
+   @ApiOperation(value = "Delete WallMessage", response = WallMessageJSON.class)
+   @PostMapping(headers = {"Content-type=application/json"}, consumes = MediaType.APPLICATION_JSON_VALUE, value = "o/delete")
+   public WallMessageJSON delete(@ApiParam(value = "wall message id", required = true) @Valid @RequestBody WallMessageJSON wallMessage) {
+    return wallMessageService.delete(wallMessage);
    }
     
 }

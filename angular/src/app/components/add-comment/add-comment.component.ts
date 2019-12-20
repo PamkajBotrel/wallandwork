@@ -20,6 +20,7 @@ export class AddCommentComponent {
   ) {}
 
   createComment(): void {
+    console.log(JSON.stringify(this.comment));
     this.commentService.add(this.comment)
     .subscribe(data => {alert("Comment posted successfully.")});
   }

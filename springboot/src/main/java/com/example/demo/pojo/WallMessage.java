@@ -24,8 +24,7 @@ public class WallMessage extends AuditModel {
     @Lob
     private String content;
 
-    // @ManyToOne
-    // @JoinColumn(name="author_id")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="author_id")
     private Long authorId;
-
 }

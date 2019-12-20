@@ -18,4 +18,8 @@ export class WallComponent implements OnInit {
   ngOnInit() {
     this.wall = this.wallService.all();
   }
+
+  deleteWallMessage(wallMessage: WallMessage): void {
+    this.wallService.delete(wallMessage);
+  };
 }

@@ -1,13 +1,12 @@
 package com.example.demo.pojo;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Data;
 
@@ -20,10 +19,7 @@ public class Comment extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    // @JoinColumn(name = "wall_message_id", nullable = false)
-    // @OnDelete(action = OnDeleteAction.CASCADE)
-    private long wallMessageId;
+    private Long wallMessageId;
 
     @NotEmpty
     private String title;
@@ -31,7 +27,7 @@ public class Comment extends AuditModel {
     @NotEmpty
     @Lob
     private String content;
-    // @ManyToOne
-    // @JoinColumn(name="author_id")
-    private Long authorId;
+
+    private Long authorId; // stupide erreur long Long
+
 }

@@ -1,23 +1,31 @@
 package com.example.demo.service;
 
-import com.example.demo.helper.WallMessageMapper;
-import com.example.demo.pojo.WallMessage;
-import com.example.demo.pojo.WallMessageJSON;
-import com.example.demo.repository.WallMessageRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
-import java.util.Date;
-import java.util.List;
+import com.example.demo.helper.WallMessageMapper;
+import com.example.demo.pojo.Comment;
+import com.example.demo.pojo.WallMessage;
+import com.example.demo.pojo.WallMessageJSON;
+import com.example.demo.repository.CommentRepository;
+import com.example.demo.repository.WallMessageRepository;
 
-@Slf4j  //bibliothèque pour les log
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j // bibliothèque pour les log
 @Service
 public class WallMessageService {
     @Resource
     private WallMessageRepository wallMessageRepository;
+
+    @Resource
+    private CommentRepository commentRepository;
 
     @Resource
     private WallMessageMapper mapper;
@@ -47,7 +55,20 @@ public class WallMessageService {
     }
 
     public int updateWallMessage(WallMessageJSON wallMessage) {
-        int numrows = wallMessageRepository.setFixedContentFor(wallMessage.getId(),wallMessage.getContent());
+        int numrows = wallMessageRepository.setFixedContentFor(wallMessage.getId(), wallMessage.getContent());
         return numrows;
+    }
+
+    public WallMessageJSON delete(WallMessageJSON wallMessage) {
+        Optional<WallMessage> wallMessage$ = wallMessageRepository.findById(wallMessage.getId());
+        if (wallMessage$.isPresent()) {
+            List<Comment> commentList = commentRepository.findAllCommentsFromWallMessageId(wallMessage.getId());
+            System.out.println("deleting a comment");
+            for (Comment c : commentList) {
+                commentRepository.delete(c);
+            }
+            wallMessageRepository.delete(wallMessage$.get());
+        }
+        return mapper.mapToPost(wallMessage$.get());
     }
 }

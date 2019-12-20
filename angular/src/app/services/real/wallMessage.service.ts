@@ -12,7 +12,7 @@ export class WallMessageService implements WallMessageRepository {
   constructor(private http: HttpClient) { }
 
   add(wallMessage: WallMessage): Observable<WallMessage> {
-    return this.http.post<WallMessage>(this.url, wallMessage);/*c'est là que se fait le lien avec le projet Springboot*/
+    return this.http.post<WallMessage>(`${this.url}/o/add`, wallMessage);/*c'est là que se fait le lien avec le projet Springboot*/
   }
 
   all(): Observable<WallMessage[]> {
@@ -21,5 +21,12 @@ export class WallMessageService implements WallMessageRepository {
 
   byId(id: string): Observable<WallMessage> {
     return this.http.get<WallMessage>(`${this.url}/${id}`);
+  }
+
+  delete(wallMessage: WallMessage): Observable<WallMessage> {
+    console.log(`${this.url}/o/delete`);
+    let result = this.http.post<WallMessage>(`${this.url}/o/delete`,wallMessage);
+    result.toPromise(); // MAGIC, delete the comment ??
+    return result;
   }
 }

@@ -13,7 +13,7 @@ export class CommentService implements CommentRepository {
   constructor(private http: HttpClient) { }
 
   add(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(this.url, comment);/*c'est là que se fait le lien avec le projet Springboot*/
+    return this.http.post<Comment>(`${this.url}/o/add`, comment);/*c'est là que se fait le lien avec le projet Springboot*/
   }
 
   byWallMessageId(wallMessageId: string): Observable<Comment[]> {
