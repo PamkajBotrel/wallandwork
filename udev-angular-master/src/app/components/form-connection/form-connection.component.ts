@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {WallMessage} from '../../models/wallMessage';
 import {Member} from '../../models/member';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {WallMessageRepository} from '../../services/wallMessage.repository';
 import {NgForm} from '@angular/forms';
 import {MemberRepository} from '../../services/member.repository';
@@ -15,17 +15,31 @@ import {MemberService} from '../../services/real/member.service';
 })
 export class FormConnectionComponent implements OnInit {
   isAuth = false;
-  constructor(private memberService: MemberRepository, private router: Router ) {
+  msgConn: string = '';
+  constructor(private memberService: MemberRepository,  private router: Router) {
 
   }
   ngOnInit() {
   }
 
   onSubmit( form: NgForm) {
-    const response  =  this.memberService.checkEmail(form.value.email);
-    console.log(response);
-    if ( response === 0) {
-       console.log( 'ça marche');
-    }
+    this.msgConn="";
+   this.memberService.checkEmail(form.value.email).subscribe((data:number)=> {
+
+     if (data === 0) {
+       this.msgConn ="mauvais identifiant";
+       console.log(data,'mauvais identifiant');
+     } else {
+       this.msgConn="connection!";
+       this.router.navigate(['/wall/']);
+
+     }
+   });
+
+
+
+
+
+
   }
 }

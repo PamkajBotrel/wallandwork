@@ -35,7 +35,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
     RegisterComponent,
     WallComponent,
     WallMessageComponent,
-    FormConnectionComponent
+    FormConnectionComponent,
     CommentComponent,
     CommentListComponent
   ],
@@ -57,7 +57,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
   providers: [
     {provide: BookRepository, useFactory: (http: HttpClient) => new BookService(http), 'deps': [HttpClient]},
     {provide: WallMessageRepository, useFactory: (http: HttpClient) => new WallMessageService(http), 'deps': [HttpClient]},
-    {provide: MemberRepository, useFactory: (http: HttpClient) => new MemberService(http), 'deps' : [HttpClient]}
+    {provide: MemberRepository, useFactory: (http: HttpClient) => new MemberService(http), 'deps' : [HttpClient]},
     {provide: CommentRepository, useFactory: (http: HttpClient) => new CommentService(http), 'deps': [HttpClient]}
   ],
   bootstrap: [AppComponent]

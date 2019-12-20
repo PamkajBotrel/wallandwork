@@ -6,6 +6,7 @@ import {Book} from '../../models/book';
 import {BookRepository} from '../book.repository';
 import {Member} from '../../models/member';
 import {MemberRepository} from '../member.repository';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Injectable()
 export class MemberService implements MemberRepository {
@@ -22,15 +23,10 @@ export class MemberService implements MemberRepository {
     return this.http.get<Member>(`${this.url}/${id}`);
   }
 
-  checkEmail(email: string) {
-    console.log(email);
-    let response: number;
-    this.http.get<number>(`${this.url}/${email}`)
-      .subscribe( ( data: number ) => {
-          response = data;
-      } );
+  checkEmail(email: string){
 
-    return response;
+    return  this.http.get<number>(`${this.url}/${email}`);
+
      }
 
 }
