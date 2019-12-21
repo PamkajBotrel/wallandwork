@@ -1,9 +1,6 @@
-<form color="primary" style="display:flex; flex-direction:column; width: 200Px;" >
-    <mat-form-field>
-        <input matInput [(ngModel)]="message.title" name="title" placeholder="Titre du message" type="text"/>
-    </mat-form-field>
-    <mat-form-field appearance ="outline">
-        <input matInput [(ngModel)]="message.content" name="content" placeholder="Votre message" type="text"/>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="createMessage()">Ajouter un message</button>
+<form>
+    <h3>Ajouter un message</h3>
+    <input [(ngModel)]="message.title" name="title" placeholder="Type your title" type="text"/><br />
+    <input [(ngModel)]="message.content" name="content" placeholder="Type your message" type="text"/><br />
+    <button (click)="createMessage()">Ajouter</button>
 </form>

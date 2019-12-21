@@ -1,20 +1,7 @@
-<form> 
-  <p>
-        <mat-form-field appearance="outline">
-                <input matInput [(ngModel)]="comment.wallMessageId" name="wallMessageId" placeholder="Id of the message" type="number" value="{{wallMessageId}}"/>
-           </mat-form-field> 
-  </p> 
-  <p>
-        <mat-form-field>
-                <mat-label>Titre du commentaire</mat-label>
-                <input matInput [(ngModel)]="comment.title" name="title" type="text"/>
-           </mat-form-field>
-  </p>
-  <p> 
-       <mat-form-field appearance="outline">
-                <mat-label>Votre commentaire</mat-label>
-                <input matInput [(ngModel)]="comment.content" name="content" placeholder="Commentaire" type="text"/>
-       </mat-form-field>
-  </p>
-        <button mat-raised-button color="primary" (click)="createComment()">Ajouter un commentaire</button>
+<form>
+     <h3>Ajouter un commentaire</h3>
+     <input [(ngModel)]="comment.title" name="title" placeholder="Type your title" type="text"/><br />
+     <input [(ngModel)]="comment.content" name="content" placeholder="Type your message" type="text"/><br />
+     <input [(ngModel)]="comment.wallMessageId" name="wallMessageId" value="{{wallMessageId}}" type="hidden"/><br/>
+     <button (click)="createComment()">Ajouter</button>
 </form>

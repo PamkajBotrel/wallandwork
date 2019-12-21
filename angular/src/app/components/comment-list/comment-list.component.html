@@ -1,7 +1,9 @@
-	
-<mat-card-content class="example-card" style="border: 2px solid black"  *ngFor="let comment of (commentList | async)">{{comment.id}} {{comment.title}} {{comment.content}} pour {{comment.wallMessageId}}
-
-        <button mat-raised-button color="warn"(click)="deleteComment(comment)">Supprimer votre commentaire</button>
-
-</mat-card-content>
-<h2>Liste de commentaires </h2>
+<h2>Liste de commentaires</h2>	
+<div *ngFor="let comment of (commentList | async)">
+<ul>
+        <li>{{comment.title}}, posté le {{comment.createdAt}}, màj le {{comment.updatedAt}}</li>
+        <li>Id de l'auteur: {{comment.authorId}}</li>
+        <li>{{comment.content}}</li>
+</ul>
+<button (click)="deleteComment(comment)">Supprimer votre commentaire</button>
+</div>

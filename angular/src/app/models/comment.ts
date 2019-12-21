@@ -3,4 +3,7 @@ export interface Comment {
     wallMessageId: string;
     title: string;
     content: string;
+    createdAt: string;
+    updateAt: string;
+    authorId: string;
 }

@@ -1,16 +1,14 @@
 
 
-
-
-<div *ngFor="let wallMessage of (wall | async)" class="container">
-    {{wallMessage.id}} {{wallMessage.title}} {{wallMessage.content}}
-    <button mat-raised-button color="warn" (click)="deleteWallMessage(wallMessage)">Supprimer le message</button>
-    <mat-card>
-        <ngu-comment-list [wallMessageId]="wallMessage.id"></ngu-comment-list>
-    </mat-card>
-    <div>
-        <ngu-add-comment [wallMessageId]="wallMessage.id"></ngu-add-comment>
-    </div>
+<div *ngFor="let wallMessage of (wall | async)">
+    <ul> 
+        <li>{{wallMessage.title}} crée le {{wallMessage.createdAt}}  le {{wallMessage.updatedAt}}</li> 
+        <li>Posté par l'auteur {{wallMessage.auteurId}}</li>
+        <li>{{wallMessage.content}}</li>
+    </ul>
+    <button (click)="deleteWallMessage(wallMessage)">Delete Message</button>
+    <ngu-comment-list [wallMessageId]="wallMessage.id"></ngu-comment-list>
+    <ngu-add-comment [wallMessageId]="wallMessage.id"></ngu-add-comment>
+<hr>
 </div>
-
-<ngu-add-message></ngu-add-message> 
+<ngu-add-message></ngu-add-message>

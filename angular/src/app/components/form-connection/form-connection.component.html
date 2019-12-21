@@ -1,16 +1,16 @@
- <form (ngSubmit)="onSubmit(f)" #f = "ngForm">
-   <mat-form-field appearance="outline">
-     <mat-label>Name</mat-label>
-     <input matInput placeholder="Placeholder" name="name">
-   </mat-form-field>
-   <br>
-   <mat-form-field appearance="outline">
-     <mat-label>Email</mat-label>
-     <input matInput placeholder="Placeholder" name="email" ngModel>
+<form (ngSubmit)="onSubmit(f)" #f = "ngForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Placeholder" name="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Placeholder" name="email" ngModel>
 
-   </mat-form-field>
-   <button mat-raised-button color="primary" type="submit">Valider</button>
-    </form>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Valider</button>
+   </form>
 
- <div> erreur d'identifiant</div>
+<div> {{msgConn}}</div>
 

@@ -6,9 +6,11 @@ import { WallComponent } from './components/wall/wall.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { FormConnectionComponent } from './components/form-connection/form-connection.component';
 
 const routes: Routes = [
-  {path: '', component: WallComponent },
+  {path: '', component: FormConnectionComponent },
+  {path: 'wall', component: WallComponent},
   {path: 'wallmessages/:id', component: WallMessageComponent},
   {path: 'wallmessages/o/add', component: AddMessageComponent},
   {path: 'wallmessages/o/delete', component: WallMessageComponent},
